@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import logoImage from '../assets/images/logo.png';
+import logoSvg from '../assets/images/logo.svg';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -11,12 +11,9 @@ const currentYear = new Date().getFullYear();
       <div class="md:col-span-2">
         <div class="mb-4">
           <Image
-            src={logoImage}
+            src={logoSvg}
             alt="We Move Mobile Homes Logo"
-            height={48}
-            format="webp"
-            quality={90}
-            class="h-10 sm:h-11 w-auto object-contain"
+            class="h-10 sm:h-12 w-auto shrink-0 object-contain"
             loading="lazy"
           />
           <span class="text-[11px] font-extrabold uppercase tracking-wider text-red-700 block mt-2">UK Nationwide & European Haulage</span>
