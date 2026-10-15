@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "we-move-mobile-homes",
+  "version": "1.0.0",
+  "description": "Specialist Mobile Home, Static Caravan & Park Home Transport across the UK and Europe.",
+  "url": "https://wemovemobilehomes.co.uk",
+  "capabilities": [
+    "mobile-home-transport",
+    "caravan-siting",
+    "hiab-crane-hire",
+    "abnormal-load-permits"
+  ]
+}
