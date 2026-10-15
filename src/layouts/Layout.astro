@@ -18,7 +18,7 @@ export interface Props {
 
 const {
   title = 'We Move Mobile Homes | Specialist Mobile Home, Static Caravan & Park Home Transport',
-  description = 'We Move Mobile Homes provides nationwide UK and international transport for mobile homes, static caravans, and park homes. Specialist low loader haulage, Hiab crane hire, emergency recovery, and abnormal load permits & escorts.',
+  description = 'We Move Mobile Homes provides nationwide UK and European transport for mobile homes, static caravans, and park homes. Specialist low loader haulage, Hiab crane hire, emergency failed move rescue, and abnormal load permits & escorts. Call 07764 341657.',
   canonicalURL = Astro.url.href,
   ogImage = '/og-image.jpg',
   googleSiteVerification,
@@ -43,16 +43,25 @@ const schemaGraph = {
       "@type": ["MovingCompany", "AutoTransport"],
       "@id": `${siteBaseUrl}#organization`,
       "name": "We Move Mobile Homes",
-      "legalName": "We Move Mobile Homes",
+      "legalName": "We Move Mobile Homes UK/EU",
+      "alternateName": "We Move Mobile Homes",
       "url": siteBaseUrl,
       "logo": new URL('/favicon.svg', siteBaseUrl).href,
       "image": new URL(ogImage, siteBaseUrl).href,
       "description": description,
-      "telephone": "+44-800-000-0000",
+      "telephone": "+447764341657",
       "email": "info@wemovemobilehomes.co.uk",
       "priceRange": "£££",
       "currenciesAccepted": "GBP, EUR",
       "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
       "areaServed": [
         {
           "@type": "Country",
@@ -78,22 +87,22 @@ const schemaGraph = {
       "knowsAbout": [
         "Specialist Mobile Home Transport",
         "Static Caravan Haulage",
-        "Residential Park Home Siting",
+        "Residential Park Home Siting & De-Rigging",
         "Low Loader Step-Frame Transport",
         "Hiab Crane Lifting & Pitch Siting",
         "Abnormal Load Police Escorts & ESDAL Clearances",
-        "Emergency Transport & Axle Breakdown Rescue"
+        "Failed Move Rescue & Breakdown Recovery"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Specialist Mobile Home & Heavy Transport Services",
+        "name": "Specialist Mobile Home & Heavy Haulage Services",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
               "name": "Mobile Home & Static Caravan Transport",
-              "description": "Nationwide UK and European relocations for single units, twin-unit holiday lodges, and residential park homes."
+              "description": "UK nationwide and European road transport for single units, twin-unit holiday lodges, and residential park homes."
             }
           },
           {
@@ -109,7 +118,7 @@ const schemaGraph = {
             "itemOffered": {
               "@type": "Service",
               "name": "Hiab Crane Hire & Precision Siting",
-              "description": "High-capacity truck-mounted crane hire for challenging pitches, hedge clearing, and laser-guided pitch leveling."
+              "description": "High-capacity truck-mounted crane hire for challenging pitches, boundary hedge clearing, and laser-guided pitch leveling."
             }
           },
           {
@@ -124,8 +133,8 @@ const schemaGraph = {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Emergency Failed Transport Rescue",
-              "description": "Rapid response recovery for stranded, axle-damaged, or unpermitted mobile homes across the UK highway network."
+              "name": "Emergency Failed Move Rescue",
+              "description": "Rapid response recovery for stranded, axle-damaged, seized running gear, or unpermitted mobile homes across the UK highway network."
             }
           }
         ]
@@ -171,7 +180,7 @@ const schemaGraph = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#0284c7" />
+    <meta name="theme-color" content="#0b1120" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={siteUrl} />
@@ -180,7 +189,7 @@ const schemaGraph = {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="mobile home transport, static caravan transport, park home transport, low loader haulage, hiab crane hire, abnormal load permits, mobile home escorts, caravan movers UK, heavy haulage" />
+    <meta name="keywords" content="mobile home transport, static caravan transport, park home transport, low loader haulage, hiab crane hire, abnormal load permits, mobile home escorts, failed move rescue, caravan movers UK, heavy haulage" />
     <meta name="author" content="We Move Mobile Homes" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
@@ -200,7 +209,7 @@ const schemaGraph = {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
 
-    <!-- Fonts -->
+    <!-- Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -224,7 +233,7 @@ const schemaGraph = {
     <!-- Page Specific Head Extensions -->
     <slot name="head" />
   </head>
-  <body class="min-h-full flex flex-col bg-slate-950 font-sans text-slate-100">
+  <body class="min-h-full flex flex-col bg-[#0b1120] font-sans text-slate-100">
     <slot />
   </body>
 </html>

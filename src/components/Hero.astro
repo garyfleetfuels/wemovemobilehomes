@@ -1,82 +1,103 @@
 ---
 ---
 
-<section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
-  <!-- Ambient background glow & grid effect -->
+<section class="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 bg-[#0b1120]">
+  <!-- Background Glow & Highway Grid Overlay -->
   <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-    <div class="h-[550px] w-[750px] rounded-full bg-gradient-to-tr from-amber-500/15 via-sky-600/10 to-transparent blur-3xl"></div>
+    <div class="h-[600px] w-[800px] rounded-full bg-gradient-to-tr from-amber-500/15 via-slate-800/20 to-transparent blur-3xl"></div>
   </div>
-  <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-50"></div>
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-4xl text-center">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs sm:text-sm font-medium text-amber-400 mb-6 backdrop-blur-sm shadow-inner">
+      <!-- Live Status Badge -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-amber-300 mb-6 backdrop-blur-sm shadow-inner">
         <span class="flex h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span>
-        <span>Trusted UK & European Abnormal Load Logistics</span>
+        <span>Nationwide UK & European Heavy Haulage</span>
+        <span class="text-slate-500">•</span>
+        <span class="text-amber-400 font-bold">ESDAL & Police Escort Compliant</span>
       </div>
 
       <!-- Main Headline / Company Name -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6">
-        <span class="block">We Move</span>
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6">
+        <span class="block text-slate-100">We Move</span>
         <span class="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">
           Mobile Homes
         </span>
       </h1>
 
-      <!-- Strapline -->
-      <p class="text-xl sm:text-2xl lg:text-3xl font-semibold text-slate-200 tracking-tight mb-8">
+      <!-- Authentic Strapline -->
+      <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-200 tracking-tight mb-6">
         Specialist Mobile Home, Static Caravan & Park Home Transport
       </p>
 
-      <!-- Business Scope / Lead text -->
-      <p class="text-base sm:text-lg lg:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10">
-        Providing end-to-end heavy haulage solutions across the UK and internationally. Our turnkey service encompasses 
-        <strong class="text-slate-200 font-semibold">UK & International transport</strong>, 
-        <strong class="text-slate-200 font-semibold">Hiab crane hire & precision siting</strong>, 
-        <strong class="text-slate-200 font-semibold">specialist low loader haulage</strong>, and comprehensive 
-        <strong class="text-slate-200 font-semibold">abnormal load permits & pilot escorts</strong>.
+      <!-- Value Proposition / Core Copy -->
+      <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+        Relocating your mobile home, static caravan, or park home? Our specialist heavy haulage team handles every detail—from 
+        <strong class="text-white font-semibold">abnormal load ESDAL permits</strong> and 
+        <strong class="text-white font-semibold">Chapter 8 police escorts</strong> to 
+        <strong class="text-white font-semibold">Hiab crane precision siting</strong> and 
+        <strong class="text-white font-semibold">low loader transport</strong>. 
+        Renowned across the UK for successful deliveries <em class="text-amber-300 font-semibold not-italic">even when other hauliers have failed or gotten stuck</em>.
       </p>
 
-      <!-- Action Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <!-- Primary Action CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
         <a
           href="#contact"
-          id="hero-primary-cta"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-8 py-4 text-base font-bold text-slate-950 shadow-lg shadow-amber-500/25 transition-all duration-200 hover:bg-amber-400 hover:shadow-xl hover:shadow-amber-500/35 hover:-translate-y-0.5 active:translate-y-0"
+          id="hero-quote-cta"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-8 py-4 text-base font-extrabold text-slate-950 shadow-xl shadow-amber-500/25 transition-all duration-200 hover:from-amber-400 hover:to-amber-500 hover:shadow-2xl hover:shadow-amber-500/35 hover:-translate-y-0.5 active:translate-y-0"
         >
-          <span>Request Transport Quote</span>
+          <span>Calculate Transport Quote</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
         </a>
 
         <a
-          href="#services"
-          id="hero-secondary-cta"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/80 px-8 py-4 text-base font-semibold text-slate-200 backdrop-blur-sm transition-all duration-200 hover:border-slate-500 hover:bg-slate-800/80 hover:text-white hover:-translate-y-0.5"
+          href="tel:+447764341657"
+          id="hero-call-cta"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl border-2 border-red-500/60 bg-red-950/30 px-8 py-4 text-base font-bold text-red-200 backdrop-blur-sm transition-all duration-200 hover:border-red-500 hover:bg-red-900/50 hover:text-white hover:-translate-y-0.5 shadow-lg shadow-red-950/40"
         >
-          <span>Explore Specialist Services</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <span>Call Dispatch: 07764 341657</span>
         </a>
       </div>
 
-      <!-- Capability Feature Highlights -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-left border-t border-slate-800/80 pt-10">
-        <div class="rounded-xl border border-slate-800/80 bg-slate-900/40 p-4 backdrop-blur-xs">
-          <div class="text-amber-400 font-bold text-lg mb-1">UK & Overseas</div>
-          <div class="text-xs text-slate-400">Nationwide point-to-point and international ferry crossings</div>
+      <!-- Trust Badges Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4 text-left border-t border-slate-800/80 pt-8">
+        <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 backdrop-blur-xs">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm sm:text-base mb-1">
+            <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+            <span>Single & Twin Units</span>
+          </div>
+          <div class="text-xs text-slate-400">Lodges & Park Homes: full de-siting, levelling & joint alignment</div>
         </div>
-        <div class="rounded-xl border border-slate-800/80 bg-slate-900/40 p-4 backdrop-blur-xs">
-          <div class="text-amber-400 font-bold text-lg mb-1">Hiab Crane Fleet</div>
-          <div class="text-xs text-slate-400">Truck-mounted cranes for precision siting & complex offloads</div>
+
+        <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 backdrop-blur-xs">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm sm:text-base mb-1">
+            <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+            <span>Hiab Crane Fleet</span>
+          </div>
+          <div class="text-xs text-slate-400">Lifting over boundary walls, soft ground & tight pitch positions</div>
         </div>
-        <div class="rounded-xl border border-slate-800/80 bg-slate-900/40 p-4 backdrop-blur-xs">
-          <div class="text-amber-400 font-bold text-lg mb-1">Step Frame Trailers</div>
-          <div class="text-xs text-slate-400">Purpose-built low loaders designed specifically for static units</div>
+
+        <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 backdrop-blur-xs">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm sm:text-base mb-1">
+            <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+            <span>Permits & Escorts</span>
+          </div>
+          <div class="text-xs text-slate-400">ESDAL Highway notifications, police route clearances & pilot cars</div>
         </div>
-        <div class="rounded-xl border border-slate-800/80 bg-slate-900/40 p-4 backdrop-blur-xs">
-          <div class="text-amber-400 font-bold text-lg mb-1">Permits & Escorts</div>
-          <div class="text-xs text-slate-400">Full police notifications, route planning & escort vehicles</div>
+
+        <div class="rounded-xl border border-red-500/30 bg-red-950/20 p-4 backdrop-blur-xs">
+          <div class="flex items-center gap-2 text-red-400 font-bold text-sm sm:text-base mb-1">
+            <span class="h-2 w-2 rounded-full bg-red-500 animate-ping"></span>
+            <span>Failed Move Rescue</span>
+          </div>
+          <div class="text-xs text-slate-400">Emergency recovery for stranded, stuck, or broken down loads</div>
         </div>
       </div>
     </div>
