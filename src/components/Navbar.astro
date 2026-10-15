@@ -1,17 +1,22 @@
 ---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/images/logo.png';
 ---
 
 <header class="sticky top-0 z-50 w-full border-b border-slate-200/90 bg-white/95 backdrop-blur-md transition-all shadow-xs">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-    <!-- Brand / Logo -->
+    <!-- Brand / Logo with optimized Image -->
     <a href="#overview" class="group flex items-center gap-3 transition-transform duration-200 hover:opacity-95" id="brand-logo-link">
-      <img
-        src="/images/websitelogocolour2.svg"
+      <Image
+        src={logoImage}
         alt="We Move Mobile Homes UK"
-        width="160"
-        height="50"
+        width={160}
+        height={50}
+        format="webp"
+        quality={85}
         class="h-10 sm:h-11 w-auto object-contain"
         loading="eager"
+        fetchpriority="high"
       />
       <div class="hidden sm:flex flex-col">
         <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 group-hover:text-red-700 transition-colors">

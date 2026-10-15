@@ -1,13 +1,29 @@
 {
-  "$schema": "https://json.schemastore.org/package.json",
-  "name": "we-move-mobile-homes",
-  "version": "1.0.0",
-  "description": "Specialist Mobile Home, Static Caravan & Park Home Transport across the UK and Europe.",
+  "specVersion": "1.0",
+  "name": "We Move Mobile Homes Agent Directory",
+  "description": "Autonomous discovery catalog and resource endpoints for We Move Mobile Homes specialist transport services.",
   "url": "https://wemovemobilehomes.co.uk",
-  "capabilities": [
-    "mobile-home-transport",
-    "caravan-siting",
-    "hiab-crane-hire",
-    "abnormal-load-permits"
+  "entries": [
+    {
+      "id": "transport-services",
+      "name": "Mobile Home & Caravan Transport Services",
+      "type": "documentation",
+      "url": "https://wemovemobilehomes.co.uk/#services",
+      "description": "Details regarding single and twin unit transport, holiday lodges, and site removal."
+    },
+    {
+      "id": "quote-calculator",
+      "name": "Transport Quote Intake",
+      "type": "service",
+      "url": "https://wemovemobilehomes.co.uk/#quote",
+      "description": "Specification endpoint for mobile home dimensions, journey routing, and access confirmations."
+    },
+    {
+      "id": "llms-manifest",
+      "name": "LLM Plaintext Context",
+      "type": "llms-txt",
+      "url": "https://wemovemobilehomes.co.uk/llms.txt",
+      "description": "Standardized markdown documentation for large language model crawlers."
+    }
   ]
 }
