@@ -1,18 +1,15 @@
 ---
-import { Image } from 'astro:assets';
-import logoSvg from '../assets/images/logo.svg';
+// Navbar component
 ---
 
 <header class="sticky top-0 z-50 w-full border-b border-slate-200/90 bg-white/95 backdrop-blur-md transition-all shadow-xs">
-  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-    <!-- Brand / Logo with optimized Image -->
-    <a href="#overview" class="group flex items-center transition-transform duration-200 hover:opacity-95 shrink-0" id="brand-logo-link" aria-label="We Move Mobile Homes - Overview">
-      <Image
-        src={logoSvg}
-        alt="We Move Mobile Homes Logo"
-        class="h-9 sm:h-10 md:h-12 lg:h-14 w-auto shrink-0 object-contain"
-        loading="eager"
-        fetchpriority="high"
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
+    <!-- Brand / Logo -->
+    <a href="#overview" class="flex items-center shrink-0 py-1 transition-opacity hover:opacity-95" id="brand-logo-link" aria-label="We Move Mobile Homes - Overview">
+      <img 
+        src="/images/logo.svg" 
+        alt="We Move Mobile Homes Logo" 
+        class="h-12 sm:h-14 md:h-16 w-auto object-contain block"
       />
     </a>
 
