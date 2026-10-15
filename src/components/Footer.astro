@@ -9,21 +9,17 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
       <!-- Col 1: Brand & Contact -->
       <div class="md:col-span-2">
-        <div class="flex items-center gap-3 mb-4">
+        <div class="mb-4">
           <Image
             src={logoImage}
             alt="We Move Mobile Homes Logo"
-            width={140}
-            height={44}
+            height={48}
             format="webp"
-            quality={85}
-            class="h-9 w-auto object-contain"
+            quality={90}
+            class="h-10 sm:h-11 w-auto object-contain"
             loading="lazy"
           />
-          <div>
-            <span class="font-black text-lg text-slate-900 tracking-tight block">We Move Mobile Homes</span>
-            <span class="text-[11px] font-extrabold uppercase tracking-wider text-red-700">UK Nationwide & European Haulage</span>
-          </div>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-red-700 block mt-2">UK Nationwide & European Haulage</span>
         </div>
         <p class="text-slate-800 font-bold mb-3 text-sm">
           Specialist Mobile Home, Static Caravan & Abnormal Load Transport
