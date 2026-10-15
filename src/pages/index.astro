@@ -3,20 +3,23 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
-import FleetHighlights from '../components/FleetHighlights.astro';
 import ContactCta from '../components/ContactCta.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout
   title="We Move Mobile Homes | Specialist Mobile Home, Static Caravan & Park Home Transport"
-  description="We Move Mobile Homes delivers professional UK and International transport for mobile homes, static caravans, and park homes with low loader haulage, Hiab crane hire, and abnormal load permits & escorts."
+  description="We Move Mobile Homes delivers professional UK and European transport for single & twin unit mobile homes, touring caravans, and abnormal loads with specialist low loader haulage, Hiab crane hire, and ESDAL permits. Call 01474 444081 or 07764 341657."
 >
   <Navbar />
   <main id="main-content">
+    <!-- 1. Overview (Hero Section) -->
     <Hero />
+
+    <!-- 2. Services (3 Visual Cards Matching Live Site) -->
     <Services />
-    <FleetHighlights />
+
+    <!-- 3. Quote Section (Gary Turner's Streamlined Quote Form) -->
     <ContactCta />
   </main>
   <Footer />

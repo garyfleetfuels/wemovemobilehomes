@@ -18,9 +18,9 @@ export interface Props {
 
 const {
   title = 'We Move Mobile Homes | Specialist Mobile Home, Static Caravan & Park Home Transport',
-  description = 'We Move Mobile Homes provides nationwide UK and European transport for mobile homes, static caravans, and park homes. Specialist low loader haulage, Hiab crane hire, emergency failed move rescue, and abnormal load permits & escorts. Call 07764 341657.',
+  description = 'We Move Mobile Homes provides nationwide UK and European transport for single & twin unit mobile homes, touring caravans, and abnormal loads. Specialist low loader haulage, Hiab crane lifting, and ESDAL permits. Call 01474 444081 or 07764 341657.',
   canonicalURL = Astro.url.href,
-  ogImage = '/og-image.jpg',
+  ogImage = '/images/sidefpg.jpg',
   googleSiteVerification,
   gaMeasurementId,
   breadcrumbs = [
@@ -46,10 +46,10 @@ const schemaGraph = {
       "legalName": "We Move Mobile Homes UK/EU",
       "alternateName": "We Move Mobile Homes",
       "url": siteBaseUrl,
-      "logo": new URL('/favicon.svg', siteBaseUrl).href,
+      "logo": new URL('/images/websitelogocolour2.svg', siteBaseUrl).href,
       "image": new URL(ogImage, siteBaseUrl).href,
       "description": description,
-      "telephone": "+447764341657",
+      "telephone": ["+441474444081", "+447764341657"],
       "email": "info@wemovemobilehomes.co.uk",
       "priceRange": "£££",
       "currenciesAccepted": "GBP, EUR",
@@ -85,56 +85,41 @@ const schemaGraph = {
         }
       ],
       "knowsAbout": [
-        "Specialist Mobile Home Transport",
-        "Static Caravan Haulage",
-        "Residential Park Home Siting & De-Rigging",
-        "Low Loader Step-Frame Transport",
-        "Hiab Crane Lifting & Pitch Siting",
-        "Abnormal Load Police Escorts & ESDAL Clearances",
-        "Failed Move Rescue & Breakdown Recovery"
+        "Moving Mobile Homes & Caravans",
+        "Single Unit Mobile Home Transport",
+        "Twin Unit Mobile Home Splitting, Sheeting & Reassembly",
+        "Site Removal & Demolition Disposal",
+        "Touring Caravans Collection & Delivery",
+        "Abnormal Loads & Low Loader Haulage",
+        "Hiab Crane Hire & Precision Lifting",
+        "Police Permits & ESDAL Movement Orders"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Specialist Mobile Home & Heavy Haulage Services",
+        "name": "We Move Mobile Homes Transport Services",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Mobile Home & Static Caravan Transport",
-              "description": "UK nationwide and European road transport for single units, twin-unit holiday lodges, and residential park homes."
+              "name": "Moving Mobile Homes & Caravans",
+              "description": "Safe, efficient transport for single and twin unit mobile homes including splitting and sheeting, site removal, transport, and responsible demolition/disposal."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Specialist Low Loader Haulage",
-              "description": "Engineered step-frame trailers with air-ride suspension and low clearance for overlength and wide static homes."
+              "name": "Touring Caravans Transport",
+              "description": "Collection, transport, and delivery across local routes, UK nationwide, and mainland Europe."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Hiab Crane Hire & Precision Siting",
-              "description": "High-capacity truck-mounted crane hire for challenging pitches, boundary hedge clearing, and laser-guided pitch leveling."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Abnormal Load Permits & Escorts",
-              "description": "Statutory National Highways ESDAL filings, police constabulary route notifications, and Chapter 8 escort vehicles."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Emergency Failed Move Rescue",
-              "description": "Rapid response recovery for stranded, axle-damaged, seized running gear, or unpermitted mobile homes across the UK highway network."
+              "name": "Abnormal Loads & Low Loader Haulage",
+              "description": "Low loader haulage for over-width, abnormal length loads with Hiab crane hire and full police/ESDAL permit coordination."
             }
           }
         ]
@@ -165,7 +150,7 @@ const schemaGraph = {
 ---
 
 <!doctype html>
-<html lang="en-GB" class="h-full bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
+<html lang="en-GB" class="h-full bg-white text-slate-900 antialiased selection:bg-red-600 selection:text-white">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -180,7 +165,7 @@ const schemaGraph = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#0b1120" />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={siteUrl} />
@@ -189,7 +174,7 @@ const schemaGraph = {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="mobile home transport, static caravan transport, park home transport, low loader haulage, hiab crane hire, abnormal load permits, mobile home escorts, failed move rescue, caravan movers UK, heavy haulage" />
+    <meta name="keywords" content="mobile home transport, caravan transport, static caravan movers, twin unit mobile home, low loader haulage, hiab crane hire, abnormal loads, touring caravan transport, we move mobile homes, Gary Turner" />
     <meta name="author" content="We Move Mobile Homes" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
@@ -212,7 +197,7 @@ const schemaGraph = {
     <!-- Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- Schema.org JSON-LD (MovingCompany / AutoTransport / BreadcrumbList) -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
@@ -233,7 +218,7 @@ const schemaGraph = {
     <!-- Page Specific Head Extensions -->
     <slot name="head" />
   </head>
-  <body class="min-h-full flex flex-col bg-[#0b1120] font-sans text-slate-100">
+  <body class="min-h-full flex flex-col bg-white font-sans text-slate-900">
     <slot />
   </body>
 </html>
