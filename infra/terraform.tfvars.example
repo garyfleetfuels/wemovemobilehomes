@@ -1,0 +1,24 @@
+# Environment identifier
+environment = "prod"
+
+# Azure region for SWA control-plane (standard: westeurope for UK/Europe)
+location = "westeurope"
+
+# Resource Group name
+resource_group_name = "rg-wmmh-prod"
+
+# Static Web App resource name
+static_web_app_name = "stapp-wmmh-prod"
+
+# SWA SKU Tier & Size ("Free" for baseline hosting, "Standard" for custom apex domains with SLA and enterprise routing)
+sku_tier = "Free"
+sku_size = "Free"
+
+# Resource tagging governance
+tags = {
+  Project     = "We Move Mobile Homes"
+  Environment = "Production"
+  ManagedBy   = "Terraform"
+  Owner       = "DevOps"
+  CostCenter  = "Digital-Operations"
+}

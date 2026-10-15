@@ -86,3 +86,21 @@ $RECYCLE.BIN/
 .temp/
 tmp/
 scratch/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+!*.tfvars.example
+*.tfvars.json
+!*.tfvars.example.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
