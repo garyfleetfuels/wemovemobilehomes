@@ -6,8 +6,14 @@ variable "environment" {
 
 variable "location" {
   type        = string
-  description = "Azure region for resources. For Azure Static Web Apps, westeurope is the standard control-plane location for UK and Europe deployments."
+  description = "Azure region for the Resource Group."
   default     = "westeurope"
+}
+
+variable "static_web_app_location" {
+  type        = string
+  description = "Azure region for the Static Web App control plane. Note: SWA distributes static assets globally across Microsoft edge PoPs; this specifies the management control plane. Defaults to 'eastus2' due to West Europe regional capacity restrictions."
+  default     = "eastus2"
 }
 
 variable "resource_group_name" {

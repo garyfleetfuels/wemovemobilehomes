@@ -10,7 +10,7 @@ module "static_web_app" {
 
   name                = var.static_web_app_name
   resource_group_name = azurerm_resource_group.this.name
-  location            = azurerm_resource_group.this.location
+  location            = var.static_web_app_location
   sku_tier            = var.sku_tier
   sku_size            = var.sku_size
   tags                = var.tags

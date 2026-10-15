@@ -1,8 +1,11 @@
 # Environment identifier
 environment = "prod"
 
-# Azure region for SWA control-plane (standard: westeurope for UK/Europe)
+# Azure region for Resource Group
 location = "westeurope"
+
+# Azure region for SWA control-plane (default: eastus2; SWA distributes content globally across edge CDN)
+static_web_app_location = "eastus2"
 
 # Resource Group name
 resource_group_name = "rg-wmmh-prod"
