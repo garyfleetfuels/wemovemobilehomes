@@ -1,0 +1,230 @@
+---
+import '../styles/global.css';
+
+export interface BreadcrumbItem {
+  name: string;
+  item: string;
+}
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonicalURL?: string;
+  ogImage?: string;
+  googleSiteVerification?: string;
+  gaMeasurementId?: string;
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const {
+  title = 'We Move Mobile Homes | Specialist Mobile Home, Static Caravan & Park Home Transport',
+  description = 'We Move Mobile Homes provides nationwide UK and international transport for mobile homes, static caravans, and park homes. Specialist low loader haulage, Hiab crane hire, emergency recovery, and abnormal load permits & escorts.',
+  canonicalURL = Astro.url.href,
+  ogImage = '/og-image.jpg',
+  googleSiteVerification,
+  gaMeasurementId,
+  breadcrumbs = [
+    { name: 'Home', item: Astro.site ? new URL('/', Astro.site).href : 'https://wemovemobilehomes.co.uk/' },
+  ],
+} = Astro.props;
+
+const siteUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : canonicalURL;
+const siteBaseUrl = Astro.site ? new URL('/', Astro.site).href : 'https://wemovemobilehomes.co.uk/';
+
+// Resolve tokens via props or environment variables
+const resolvedGoogleSiteVerification = googleSiteVerification || import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const resolvedGaMeasurementId = gaMeasurementId || import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+
+// Structured Schema.org graph (MovingCompany + AutoTransport + Breadcrumbs)
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["MovingCompany", "AutoTransport"],
+      "@id": `${siteBaseUrl}#organization`,
+      "name": "We Move Mobile Homes",
+      "legalName": "We Move Mobile Homes",
+      "url": siteBaseUrl,
+      "logo": new URL('/favicon.svg', siteBaseUrl).href,
+      "image": new URL(ogImage, siteBaseUrl).href,
+      "description": description,
+      "telephone": "+44-800-000-0000",
+      "email": "info@wemovemobilehomes.co.uk",
+      "priceRange": "£££",
+      "currenciesAccepted": "GBP, EUR",
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "United Kingdom"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "England"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Scotland"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Wales"
+        },
+        {
+          "@type": "Continent",
+          "name": "Europe"
+        }
+      ],
+      "knowsAbout": [
+        "Specialist Mobile Home Transport",
+        "Static Caravan Haulage",
+        "Residential Park Home Siting",
+        "Low Loader Step-Frame Transport",
+        "Hiab Crane Lifting & Pitch Siting",
+        "Abnormal Load Police Escorts & ESDAL Clearances",
+        "Emergency Transport & Axle Breakdown Rescue"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Specialist Mobile Home & Heavy Transport Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile Home & Static Caravan Transport",
+              "description": "Nationwide UK and European relocations for single units, twin-unit holiday lodges, and residential park homes."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Specialist Low Loader Haulage",
+              "description": "Engineered step-frame trailers with air-ride suspension and low clearance for overlength and wide static homes."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hiab Crane Hire & Precision Siting",
+              "description": "High-capacity truck-mounted crane hire for challenging pitches, hedge clearing, and laser-guided pitch leveling."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Abnormal Load Permits & Escorts",
+              "description": "Statutory National Highways ESDAL filings, police constabulary route notifications, and Chapter 8 escort vehicles."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Emergency Failed Transport Rescue",
+              "description": "Rapid response recovery for stranded, axle-damaged, or unpermitted mobile homes across the UK highway network."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteBaseUrl}#website`,
+      "url": siteBaseUrl,
+      "name": "We Move Mobile Homes",
+      "description": description,
+      "publisher": {
+        "@id": `${siteBaseUrl}#organization`
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${siteUrl}#breadcrumb`,
+      "itemListElement": breadcrumbs.map((crumb, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": crumb.name,
+        "item": crumb.item
+      }))
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en-GB" class="h-full bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Google Site Verification (GSC) -->
+    {resolvedGoogleSiteVerification && (
+      <meta name="google-site-verification" content={resolvedGoogleSiteVerification} />
+    )}
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0284c7" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="mobile home transport, static caravan transport, park home transport, low loader haulage, hiab crane hire, abnormal load permits, mobile home escorts, caravan movers UK, heavy haulage" />
+    <meta name="author" content="We Move Mobile Homes" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="We Move Mobile Homes" />
+    <meta property="og:locale" content="en_GB" />
+
+    <!-- Twitter / X -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org JSON-LD (MovingCompany / AutoTransport / BreadcrumbList) -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
+
+    <!-- Google Analytics (GA4) / Google Tag Manager -->
+    {resolvedGaMeasurementId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${resolvedGaMeasurementId}`}></script>
+        <script is:inline define:vars={{ resolvedGaMeasurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', resolvedGaMeasurementId);
+        </script>
+      </>
+    )}
+
+    <!-- Page Specific Head Extensions -->
+    <slot name="head" />
+  </head>
+  <body class="min-h-full flex flex-col bg-slate-950 font-sans text-slate-100">
+    <slot />
+  </body>
+</html>
