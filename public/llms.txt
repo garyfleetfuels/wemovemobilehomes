@@ -10,7 +10,6 @@ We Move Mobile Homes is an established heavy haulage and abnormal load logistics
 - [Core Transport Services](https://wemovemobilehomes.co.uk/#services): Detailed breakdown of single unit moving, twin-unit splitting & sheeting, touring caravan delivery, and abnormal load permits.
 - [Direct Transport Quote Form](https://wemovemobilehomes.co.uk/#quote): Mobile-first quote intake form for route planning, dimensions, and fast operator callback with pricing.
 - [Terms & Conditions](https://wemovemobilehomes.co.uk/terms-conditions): Complete contractual terms, carriage conditions, demurrage rates, and customer responsibilities under RHA standards.
-- [Live Services Catalog](https://wemovemobilehomes.co.uk/services): Live operator services page detailing full haulage and siting operations.
 
 ## Core Capabilities & Services
 
