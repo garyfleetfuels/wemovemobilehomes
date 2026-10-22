@@ -1,15 +1,17 @@
 {
   "$schema": "https://agentic-web.org/schemas/v1/ai-catalog.json",
-  "version": "1.0.0",
+  "api_version": "1.0.0",
   "name": "We Move Mobile Homes",
   "description": "Specialist mobile home, static caravan, and park home transport operations across the UK and Europe.",
-  "endpoints": [
+  "entries": [
     {
+      "name": "Documentation",
       "type": "documentation",
       "url": "/llms.txt",
       "description": "Curated LLM operational profile and service specifications"
     },
     {
+      "name": "Terms of Carriage",
       "type": "terms",
       "url": "/terms-conditions",
       "description": "28-clause terms of carriage and site access requirements"
