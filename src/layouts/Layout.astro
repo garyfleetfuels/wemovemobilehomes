@@ -47,7 +47,13 @@ const schemaGraph = {
       "legalName": "We Move Mobile Homes UK/EU",
       "alternateName": "We Move Mobile Homes",
       "url": siteBaseUrl,
-      "logo": new URL('/images/websitelogocolour2.svg', siteBaseUrl).href,
+      "logo": {
+        "@type": "ImageObject",
+        "url": new URL('/images/websitelogocolour2.svg', siteBaseUrl).href,
+        "width": 1320,
+        "height": 300,
+        "caption": "We Move Mobile Homes Logo"
+      },
       "image": new URL(ogImage, siteBaseUrl).href,
       "description": description,
       "telephone": ["+441474444081", "+447764341657"],
