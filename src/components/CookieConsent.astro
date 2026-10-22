@@ -1,0 +1,119 @@
+---
+// CookieConsent.astro - UK GDPR & PECR compliant consent banner with Google Consent Mode v2 support
+---
+
+<div
+  id="cookie-consent-banner"
+  class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 hidden rounded-2xl border border-slate-300 bg-white/95 p-5 shadow-2xl backdrop-blur-md text-slate-800 transition-all duration-300 ease-in-out"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Cookie and Privacy Consent"
+>
+  <div class="flex items-start gap-3 mb-3">
+    <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-700 font-black text-sm mt-0.5">
+      🍪
+    </div>
+    <div>
+      <h3 class="text-sm font-black text-slate-900">Cookie & Privacy Preferences</h3>
+      <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+        We use essential cookies to ensure our site functions properly. With your permission, we also use optional analytics cookies to measure and improve our haulage services in accordance with UK GDPR and PECR regulations.
+      </p>
+    </div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row items-center gap-2 pt-2 border-t border-slate-100">
+    <button
+      type="button"
+      id="cookie-accept-all"
+      class="w-full sm:w-auto flex-1 rounded-xl bg-red-600 px-3.5 py-2 text-xs font-black text-white shadow-xs transition hover:bg-red-700 cursor-pointer text-center"
+    >
+      Accept All
+    </button>
+    <button
+      type="button"
+      id="cookie-reject-optional"
+      class="w-full sm:w-auto flex-1 rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2 text-xs font-bold text-slate-700 transition hover:bg-slate-100 cursor-pointer text-center"
+    >
+      Reject Non-Essential
+    </button>
+    <a
+      href="/terms-conditions"
+      class="text-[11px] font-semibold text-slate-500 hover:text-red-700 hover:underline px-1 py-1"
+      title="View Terms & Privacy"
+    >
+      Details
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+  (function initCookieConsent() {
+    const banner = document.getElementById('cookie-consent-banner');
+    const acceptBtn = document.getElementById('cookie-accept-all');
+    const rejectBtn = document.getElementById('cookie-reject-optional');
+
+    function updateConsent(state) {
+      if (typeof window.gtag === 'function') {
+        if (state === 'granted') {
+          window.gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted',
+            'functionality_storage': 'granted',
+            'security_storage': 'granted'
+          });
+        } else {
+          window.gtag('consent', 'update', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'granted',
+            'security_storage': 'granted'
+          });
+        }
+      }
+      try {
+        localStorage.setItem('cookie_consent', state);
+      } catch (e) {
+        // Fallback if localStorage is unavailable
+      }
+      if (banner) {
+        banner.classList.add('hidden');
+      }
+    }
+
+    // Check if consent is already set
+    let saved = null;
+    try {
+      saved = localStorage.getItem('cookie_consent');
+    } catch (e) {}
+
+    if (!saved && banner) {
+      banner.classList.remove('hidden');
+    }
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function () {
+        updateConsent('granted');
+      });
+    }
+
+    if (rejectBtn) {
+      rejectBtn.addEventListener('click', function () {
+        updateConsent('denied');
+      });
+    }
+
+    // Allow user to re-open cookie preferences from footer or links
+    document.addEventListener('click', function (e) {
+      const trigger = e.target.closest('[data-open-cookie-preferences]');
+      if (trigger && banner) {
+        e.preventDefault();
+        banner.classList.remove('hidden');
+        banner.focus();
+      }
+    });
+  })();
+</script>

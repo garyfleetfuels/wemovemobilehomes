@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CookieConsent from '../components/CookieConsent.astro';
 
 export interface BreadcrumbItem {
   name: string;
@@ -223,13 +224,40 @@ const schemaGraph = {
     <!-- Schema.org JSON-LD (MovingCompany / AutoTransport / BreadcrumbList) -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
 
+    <!-- Google Consent Mode v2 Default Setup (UK GDPR / PECR) -->
+    <script is:inline>
+      // Establish Google Consent Mode v2 defaults immediately
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+
+      const savedConsent = typeof localStorage !== 'undefined' ? localStorage.getItem('cookie_consent') : null;
+
+      if (savedConsent === 'granted') {
+        gtag('consent', 'default', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted',
+          'functionality_storage': 'granted',
+          'security_storage': 'granted'
+        });
+      } else {
+        gtag('consent', 'default', {
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'analytics_storage': 'denied',
+          'functionality_storage': 'granted',
+          'security_storage': 'granted'
+        });
+      }
+    </script>
+
     <!-- Google Analytics (GA4) / Google Tag Manager -->
     {resolvedGaMeasurementId && (
       <>
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${resolvedGaMeasurementId}`}></script>
         <script is:inline define:vars={{ resolvedGaMeasurementId }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', resolvedGaMeasurementId);
         </script>
@@ -241,5 +269,6 @@ const schemaGraph = {
   </head>
   <body class="min-h-full flex flex-col bg-white font-sans text-slate-900">
     <slot />
+    <CookieConsent />
   </body>
 </html>
