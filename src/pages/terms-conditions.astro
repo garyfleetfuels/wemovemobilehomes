@@ -1,0 +1,605 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const breadcrumbs = [
+  { name: 'Home', item: 'https://wemovemobilehomes.co.uk/' },
+  { name: 'Terms & Conditions', item: 'https://wemovemobilehomes.co.uk/terms-conditions' },
+];
+
+const clauseSections = [
+  { id: 'payment-booking', title: '1. Payment & Booking', range: 'Clauses 1.0 – 3.0' },
+  { id: 'collection-delivery', title: '2. Readiness & Delivery', range: 'Clauses 4.0 – 6.0' },
+  { id: 'transit-insurance', title: '3. Transit & Insurance', range: 'Clauses 7.0 – 10.0' },
+  { id: 'permits-safety', title: '4. Permits & Safety', range: 'Clauses 11.0 – 14.0' },
+  { id: 'exclusions-siting', title: '5. Siting & RHA Terms', range: 'Clauses 15.0 – 17.0' },
+  { id: 'liability-indemnity', title: '6. Liability & Indemnity', range: 'Clauses 18.0 – 24.0' },
+  { id: 'warranties-final', title: '7. Final Contract Terms', range: 'Clauses 25.0 – 28.0' },
+];
+---
+
+<Layout
+  title="Terms & Conditions | We Move Mobile Homes"
+  description="Official Terms and Conditions of Carriage for We Move Mobile Homes. Operational guidelines, payment schedules, cancellation tiers, demurrage rates, and RHA Conditions of Carriage."
+  canonicalURL="https://wemovemobilehomes.co.uk/terms-conditions"
+  breadcrumbs={breadcrumbs}
+>
+  <Navbar />
+
+  <main id="main-content" class="bg-slate-50 min-h-screen text-slate-800">
+    <!-- Breadcrumb & Header Hero -->
+    <header class="border-b border-slate-200 bg-white pt-8 pb-10 sm:py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumbs" class="mb-5 flex items-center gap-2 text-xs font-bold text-slate-500">
+          <a href="/" class="hover:text-red-700 transition-colors">Home</a>
+          <span>/</span>
+          <span class="text-slate-900" aria-current="page">Terms & Conditions</span>
+        </nav>
+
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-red-300 bg-red-100 px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-red-900 mb-3 shadow-xs">
+              Contract of Carriage
+            </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+              Terms & Conditions
+            </h1>
+          </div>
+
+          <!-- Document Metadata & Print Action -->
+          <div class="flex flex-col sm:items-end gap-2 text-xs text-slate-600">
+            <span class="inline-flex items-center gap-1.5 font-bold text-slate-800 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Last Updated: 9th February 2024
+            </span>
+            <span class="text-slate-500 font-medium">We Move Mobile Homes • Registered in England</span>
+            <button
+              type="button"
+              id="print-terms-btn"
+              class="inline-flex items-center gap-1.5 font-bold text-red-700 hover:text-red-800 hover:underline mt-1 cursor-pointer"
+              title="Print document or save as PDF"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+              </svg>
+              Print / Save as PDF
+            </button>
+          </div>
+        </div>
+
+        <p class="mt-6 text-sm sm:text-base text-slate-700 leading-relaxed font-normal border-t border-slate-100 pt-5">
+          These Terms and Conditions govern all transport, haulage, siting, de-siting, escort, and logistical services supplied by <strong>We Move Mobile Homes</strong> ("the Company") across the United Kingdom and mainland Europe. By instructing the Company, accepting a quote, or paying a booking deposit, you ("the Customer") agree to be bound by these Terms and the Road Haulage Association (RHA) Conditions of Carriage.
+        </p>
+      </div>
+    </header>
+
+    <!-- Quick Navigation Bar -->
+    <div class="sticky top-16 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-xs">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <div class="flex items-center gap-3 overflow-x-auto py-3 no-scrollbar text-xs font-bold text-slate-700">
+          <span class="text-slate-400 shrink-0 uppercase tracking-wider text-[11px]">Jump to:</span>
+          {clauseSections.map((sec) => (
+            <a
+              href={`#${sec.id}`}
+              class="shrink-0 rounded-lg px-2.5 py-1.5 hover:bg-red-50 hover:text-red-700 transition-colors border border-transparent hover:border-red-200"
+            >
+              {sec.title}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Clauses Body -->
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 py-12">
+      <div class="space-y-12">
+
+        <!-- ========================================== -->
+        <!-- SECTION 1: Payment & Booking (1.0 – 3.0) -->
+        <!-- ========================================== -->
+        <section id="payment-booking" class="scroll-mt-32 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-xs">
+          <div class="border-b border-slate-200 pb-4 mb-6">
+            <span class="text-xs font-black uppercase tracking-wider text-red-700">Section 1</span>
+            <h2 class="text-2xl font-black text-slate-900 mt-1">Payment Terms & Booking Policies</h2>
+          </div>
+
+          <div class="space-y-8 text-sm sm:text-base text-slate-700 leading-relaxed">
+            <!-- 1.0 Payment Terms -->
+            <div>
+              <h3 class="text-lg font-black text-slate-900 mb-2">1.0 Payment Terms</h3>
+              <p class="mb-3">
+                <strong>1.1 Quotations:</strong> All quotations issued by the Company remain valid for thirty (30) days from the date of issue unless otherwise specified in writing. Quotations are formulated based on the dimensions, weight, collection location, and delivery route details provided by the Customer.
+              </p>
+              
+              <!-- CALLOUT: Clause 1.2 -->
+              <div class="my-4 rounded-2xl border-2 border-red-500/80 bg-red-50/70 p-4 sm:p-5 text-slate-900">
+                <div class="flex items-start gap-3">
+                  <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-white font-black text-xs mt-0.5">
+                    !
+                  </div>
+                  <div class="space-y-2 text-xs sm:text-sm">
+                    <h4 class="font-black text-red-950 uppercase tracking-wider text-xs">
+                      Clause 1.2 — Booking Deposit & Cancellation Schedule Tiers
+                    </h4>
+                    <p>
+                      A deposit of <strong>25%</strong> of the total quoted price is required upon booking confirmation to secure vehicle allocation, routing slots, and escort scheduling. The remaining balance of <strong>75%</strong> is payable strictly prior to or at the point of vehicle collection.
+                    </p>
+                    <p class="font-bold text-red-950">
+                      Cancellation charges apply in accordance with the following strict schedule:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 font-medium">
+                      <li><strong>Notice of 7+ working days prior to collection:</strong> Full refund of deposit less a £75.00 + VAT administrative and route processing fee.</li>
+                      <li><strong>Notice of 3 to 7 working days prior to collection:</strong> 50% of the total contract price is due and payable immediately.</li>
+                      <li><strong>Notice under 48 hours or day of move:</strong> 100% of the total contract price is payable in full. This applies equally to abortive collections caused by site unreadiness or locked access gates.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <p class="mb-3">
+                <strong>1.3 Permitted Payment Methods:</strong> Payment may be made via electronic bank transfer (BACS / CHAPS) or recognized debit/credit cards. Cleared funds must be received prior to unit offloading unless credit terms have been expressly agreed in writing.
+              </p>
+              <p>
+                <strong>1.4 Overdue Sums & Interest:</strong> Interest on overdue accounts shall accrue daily at the rate of 8% per annum above the Bank of England base rate in accordance with the Late Payment of Commercial Debts (Interest) Act 1998, along with statutory debt recovery costs.
+              </p>
+            </div>
+
+            <!-- 2.0 Collection Readiness -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">2.0 Collection Readiness</h3>
+              <p class="mb-3">
+                <strong>2.1 Customer Readiness Warranty:</strong> The Customer warrants that the mobile home, modular building, or static caravan will be completely disconnected from all mains services, clear of all external obstacles, and structurally fit to be loaded or winched at the scheduled collection arrival time.
+              </p>
+
+              <!-- CALLOUT: Clause 2.2 -->
+              <div class="my-4 rounded-2xl border-2 border-amber-500/80 bg-amber-50/70 p-4 sm:p-5 text-slate-900">
+                <div class="flex items-start gap-3">
+                  <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-600 text-white font-black text-xs mt-0.5">
+                    ⏱
+                  </div>
+                  <div class="space-y-1.5 text-xs sm:text-sm">
+                    <h4 class="font-black text-amber-950 uppercase tracking-wider text-xs">
+                      Clause 2.2 — Waiting Time & Demurrage Charges (£85/hr)
+                    </h4>
+                    <p>
+                      Each quotation includes an allowance of up to <strong>two (2) hours on-site at collection</strong> and up to <strong>two (2) hours on-site at delivery</strong> for standard loading, securing, and unloading procedures.
+                    </p>
+                    <p class="font-semibold text-amber-950">
+                      Any delays exceeding this allowance resulting from unready units, parked car obstructions, locked security gates, missing park keys, or delayed customer attendance will be charged at <strong>£85.00 + VAT per hour (or part thereof)</strong> per transport vehicle, plus any applicable escort vehicle standing charges.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3.0 Cancellation by the Company -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">3.0 Cancellation by the Company</h3>
+              <p>
+                <strong>3.1 Safety & Regulatory Rescheduling:</strong> The Company reserves the absolute right to cancel, defer, or reschedule transport operations without financial penalty in the event of severe adverse weather warnings (including gale force winds exceeding safe transport thresholds for high-sided loads), national motorway closures, emergency police movement bans, mechanical breakdown, or unnotified roadworks. In such circumstances, the Company will re-schedule the movement at the earliest safe opportunity.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 2: Readiness & Delivery (4.0 – 6.0) -->
+        <!-- ========================================== -->
+        <section id="collection-delivery" class="scroll-mt-32 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-xs">
+          <div class="border-b border-slate-200 pb-4 mb-6">
+            <span class="text-xs font-black uppercase tracking-wider text-red-700">Section 2</span>
+            <h2 class="text-2xl font-black text-slate-900 mt-1">Delivery Conditions, Access & Ground Protection</h2>
+          </div>
+
+          <div class="space-y-8 text-sm sm:text-base text-slate-700 leading-relaxed">
+            <!-- 4.0 Delivery Conditions -->
+            <div>
+              <h3 class="text-lg font-black text-slate-900 mb-2">4.0 Delivery Conditions</h3>
+              <p class="mb-3">
+                <strong>4.1 Route Verification:</strong> The Customer is solely responsible for verifying and ensuring suitable access routes, gate widths, turning geometry, and overhead clearances from the public highway to the delivery drop-off point.
+              </p>
+
+              <!-- CALLOUT: Clause 4.2 & 4.4 -->
+              <div class="my-4 rounded-2xl border-2 border-red-500/80 bg-red-50/70 p-4 sm:p-5 text-slate-900">
+                <div class="flex items-start gap-3">
+                  <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-white font-black text-xs mt-0.5">
+                    ⚠
+                  </div>
+                  <div class="space-y-2 text-xs sm:text-sm">
+                    <h4 class="font-black text-red-950 uppercase tracking-wider text-xs">
+                      Clauses 4.2 & 4.4 — Mandatory 2ft Clearance & Strict Hard-Standing Rule
+                    </h4>
+                    <p>
+                      <strong>Clause 4.2 (Clearance Standards):</strong> Transport vehicles and abnormal loads require a minimum unobstructed roadway width of <strong>unit width plus two (2) feet (0.6 metres)</strong> throughout all approach lanes, gateway entrances, and private access roads, free from low-hanging tree branches, telephone cables, brick walls, rockeries, and parked vehicles. A minimum vertical clearance of <strong>15 feet (4.57 metres)</strong> is mandatory.
+                    </p>
+                    <p>
+                      <strong>Clause 4.4 (Strict Hard-Standing Delivery Rule):</strong> Delivery vehicles will <strong>under no circumstances drive onto soft grass, uncompacted soil, mud, or unmade ground</strong> without prior inspection and written customer indemnity. Transport vehicles operate at gross train weights of up to 44 tonnes; drivers retain absolute authority to refuse access if ground conditions risk vehicle bogging, axle damage, or environmental damage.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                <strong>4.3 Drop-off Location:</strong> If the intended plot or pitch cannot be safely reached due to width or ground restrictions, delivery will be completed at the nearest safe hard-standing area, which shall constitute full and final completion of carriage under the contract.
+              </p>
+            </div>
+
+            <!-- 5.0 Delays -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">5.0 Delays</h3>
+              <p>
+                <strong>5.1 Consequential Loss Exclusion:</strong> Transit delivery times and dates are estimated in good faith. The Company shall not be liable for any indirect or consequential loss, cost, or expense incurred by the Customer (including park accommodation fees, lost wages, temporary living costs, or crane hire cancellation fees) resulting from motorway traffic delays, police regulatory holds, or mechanical repairs.
+              </p>
+            </div>
+
+            <!-- 6.0 Ground Protection -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">6.0 Ground Protection</h3>
+              <p>
+                <strong>6.1 Trackway & Private Paving:</strong> Where access across lawns, soft park ground, or fragile block paving is requested, the Customer must supply and lay heavy-duty ground protection mats or trackway boards prior to vehicle arrival. The Company accepts zero liability for turf disturbance, ground rutting, cracked pavers, or damage to concealed underground utilities (such as water pipes, septic tanks, or soakaways) when operating on private ground under the Customer's direction.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 3: Transit & Insurance (7.0 – 10.0) -->
+        <!-- ========================================== -->
+        <section id="transit-insurance" class="scroll-mt-32 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-xs">
+          <div class="border-b border-slate-200 pb-4 mb-6">
+            <span class="text-xs font-black uppercase tracking-wider text-red-700">Section 3</span>
+            <h2 class="text-2xl font-black text-slate-900 mt-1">Transit Liability, Subcontracting & Contents</h2>
+          </div>
+
+          <div class="space-y-8 text-sm sm:text-base text-slate-700 leading-relaxed">
+            <!-- 7.0 Subcontracting -->
+            <div>
+              <h3 class="text-lg font-black text-slate-900 mb-2">7.0 Subcontracting</h3>
+              <p>
+                <strong>7.1 Right to Delegate:</strong> The Company reserves the right to engage accredited, vetted subcontractors, partner low loader operators, or specialist escort contractors to execute carriage or ancillary operations in whole or in part, subject to these same contractual terms and RHA standards.
+              </p>
+            </div>
+
+            <!-- 8.0 Transit Liability -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">8.0 Transit Liability</h3>
+              <p>
+                <strong>8.1 Scope of Transit:</strong> Carriage of goods is undertaken subject to the Road Haulage Association (RHA) Conditions of Carriage 2010 and these special conditions. Transit commences when the unit is winched or loaded onto the transport vehicle and secured, and terminates upon vehicle arrival at the destination drop-off location prior to offloading.
+              </p>
+            </div>
+
+            <!-- 9.0 Customer Responsibilities -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">9.0 Customer Responsibilities</h3>
+              <p class="mb-2">
+                <strong>9.1 Weatherproofing & External Fixtures:</strong> Prior to transport vehicle arrival, the Customer must ensure that all external windows, skylights, vents, pop-outs, and doors are securely latched, locked, and weatherproofed.
+              </p>
+              <p>
+                <strong>9.2 Ancillary Dismantling:</strong> All exterior decking, skirting, awnings, satellite dishes, aerials, flue terminals, and gas bottles must be completely dismantled and removed from the exterior of the home prior to collection. The Company accepts no liability for unfastened items detaching during transit.
+              </p>
+            </div>
+
+            <!-- 10.0 Insurance & Internal Contents -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">10.0 Insurance & Internal Contents</h3>
+              <p class="mb-3">
+                <strong>10.1 Structural Transit Insurance:</strong> Fully comprehensive Goods-in-Transit insurance covers the physical shell, chassis, and factory-fitted structure of the mobile home while on board the carrier's vehicle, subject to policy limits and excess terms.
+              </p>
+
+              <!-- CALLOUT: Clause 10.2 -->
+              <div class="my-4 rounded-2xl border-2 border-red-500/80 bg-red-50/70 p-4 sm:p-5 text-slate-900">
+                <div class="flex items-start gap-3">
+                  <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-white font-black text-xs mt-0.5">
+                    ⚖
+                  </div>
+                  <div class="space-y-2 text-xs sm:text-sm">
+                    <h4 class="font-black text-red-950 uppercase tracking-wider text-xs">
+                      Clause 10.2 — Unit Weight Compliance & Customer Clearance of Contents
+                    </h4>
+                    <p>
+                      Mobile homes and park lodges are surveyed and transported based on standard manufacturer tare specifications.
+                    </p>
+                    <p class="font-bold text-red-950">
+                      The Customer MUST completely empty the unit of all personal belongings, loose furniture, white goods, heavy personal effects, building supplies, tools, and stored excess weight prior to collection.
+                    </p>
+                    <p>
+                      Transporting overloaded units introduces dangerous structural hazards, including catastrophic chassis buckling, tire blowouts, axle failure, and commercial axle-overload violations under UK highway legislation. The Company accepts <strong>zero liability for internal breakage, furniture damage, or chassis distortion</strong> caused by unemptied contents, and the Customer shall indemnify the Company against any DVSA/police overload fines incurred.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 4: Permits & Safety (11.0 – 14.0) -->
+        <!-- ========================================== -->
+        <section id="permits-safety" class="scroll-mt-32 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-xs">
+          <div class="border-b border-slate-200 pb-4 mb-6">
+            <span class="text-xs font-black uppercase tracking-wider text-red-700">Section 4</span>
+            <h2 class="text-2xl font-black text-slate-900 mt-1">Permits, Escort Vehicles & Driver Authority</h2>
+          </div>
+
+          <div class="space-y-8 text-sm sm:text-base text-slate-700 leading-relaxed">
+            <!-- 11.0 Permits -->
+            <div>
+              <h3 class="text-lg font-black text-slate-900 mb-2">11.0 Permits & Police Notifications</h3>
+              <p class="mb-2">
+                <strong>11.1 ESDAL Statutory Clearances:</strong> For oversized loads exceeding statutory dimensions (width exceeding 2.9 metres / 9ft 6in or combination length exceeding 18.65 metres), the Company will file statutory abnormal load notifications via National Highways ESDAL (Electronic Service Delivery for Abnormal Loads) to all relevant police constabularies and highway bridge authorities.
+              </p>
+              <p>
+                <strong>11.2 Notice Periods:</strong> Statutory notice periods (ranging from 2 to 5 clear working days excluding weekends and bank holidays) are mandated by UK law. Movements cannot proceed until statutory authority clearances have legally elapsed.
+              </p>
+            </div>
+
+            <!-- 12.0 Escort Vehicles -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">12.0 Escort Vehicles</h3>
+              <p>
+                <strong>12.1 Pilot Car Scheduling:</strong> Where self-escort pilot vehicles or police escorts are required by road topography, bridge constraints, or police movement orders, these are scheduled in accordance with Highways England and ACPO abnormal load codes. Costs are incorporated into the quotation or billed as agreed in writing.
+              </p>
+            </div>
+
+            <!-- 13.0 Driver's Discretion -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">13.0 Driver’s Discretion</h3>
+              <p>
+                <strong>13.1 Professional Safety Authority:</strong> The transport driver retains ultimate legal authority over vehicle navigation, loading, and offloading. If in the professional opinion of the driver, movement cannot be executed safely without risk of life, property damage, infrastructure collision, or vehicle rollover, the driver may suspend operations until safe conditions exist or terminate delivery at the nearest safe hard-standing area.
+              </p>
+            </div>
+
+            <!-- 14.0 Force Majeure -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">14.0 Force Majeure</h3>
+              <p>
+                <strong>14.1 External Events:</strong> Neither party shall be liable for failure to perform contractual duties resulting from acts of God, flood, storm, gale winds, lightning, fire, strikes, industrial actions, warfare, pandemic emergency orders, unexpected bridge closures, or sudden police road prohibitions beyond reasonable control.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 5: Siting & RHA Terms (15.0 – 17.0) -->
+        <!-- ========================================== -->
+        <section id="exclusions-siting" class="scroll-mt-32 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-xs">
+          <div class="border-b border-slate-200 pb-4 mb-6">
+            <span class="text-xs font-black uppercase tracking-wider text-red-700">Section 5</span>
+            <h2 class="text-2xl font-black text-slate-900 mt-1">Data Protection, Service Exclusions & RHA Conditions</h2>
+          </div>
+
+          <div class="space-y-8 text-sm sm:text-base text-slate-700 leading-relaxed">
+            <!-- 15.0 Data Protection -->
+            <div>
+              <h3 class="text-lg font-black text-slate-900 mb-2">15.0 Data Protection</h3>
+              <p>
+                <strong>15.1 UK GDPR Compliance:</strong> Customer contact details, transport itineraries, and movement records are collected and processed in strict adherence to the UK General Data Protection Regulation (UK GDPR) and Data Protection Act 2018. Data is utilized exclusively for logistics fulfillment, ESDAL police filings, and accounting. The Company never sells customer data to third-party marketing companies.
+              </p>
+            </div>
+
+            <!-- 16.0 Desiting & Siting -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">16.0 Desiting & Siting</h3>
+              
+              <!-- CALLOUT: Clause 16.0 -->
+              <div class="my-4 rounded-2xl border-2 border-red-500/80 bg-red-50/70 p-4 sm:p-5 text-slate-900">
+                <div class="flex items-start gap-3">
+                  <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-white font-black text-xs mt-0.5">
+                    🛠
+                  </div>
+                  <div class="space-y-2 text-xs sm:text-sm">
+                    <h4 class="font-black text-red-950 uppercase tracking-wider text-xs">
+                      Clause 16.0 — Service Exclusions & Disclaimers
+                    </h4>
+                    <ul class="list-disc pl-5 space-y-1.5 font-medium">
+                      <li>
+                        <strong>Utility Isolation & Reconnection:</strong> The Company is <strong>NOT licensed or insured to connect or disconnect live mains gas, electricity, or plumbing</strong>. All services must be fully decommissioned and certified by qualified Gas Safe and NICEIC tradespersons prior to transport vehicle arrival.
+                      </li>
+                      <li>
+                        <strong>Air Conditioning Degassing:</strong> External air-conditioning split units, heat pumps, or compressors must be professionally degassed and removed prior to transport.
+                      </li>
+                      <li>
+                        <strong>Second-Hand & Pre-Owned Trim Disclaimers:</strong> On older, pre-owned, or weathered units, the Company accepts no liability for brittle PVC corner mouldings, degraded roof tiles, perished window seals, or corroded under-chassis outriggers that loosen or crack under normal highway vibration.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                <strong>16.1 Pitch Positioning:</strong> Siting operations comprise maneuvering the unit onto the designated hard-standing pad and rough-leveling on blocks/axle stands. Final fine leveling, connection of utilities, and internal commissioning remain the Customer's responsibility.
+              </p>
+            </div>
+
+            <!-- 17.0 RHA Conditions -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">17.0 RHA Conditions of Carriage (2010)</h3>
+              
+              <!-- CALLOUT: Clause 17.0 -->
+              <div class="my-4 rounded-2xl border-2 border-slate-400 bg-slate-100 p-4 sm:p-5 text-slate-900">
+                <div class="flex items-start gap-3">
+                  <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white font-black text-xs mt-0.5">
+                    §
+                  </div>
+                  <div class="space-y-1.5 text-xs sm:text-sm">
+                    <h4 class="font-black text-slate-950 uppercase tracking-wider text-xs">
+                      Clause 17.0 — RHA Conditions of Carriage (2010 Edition)
+                    </h4>
+                    <p>
+                      All transport operations are executed under the <strong>Road Haulage Association Conditions of Carriage (latest edition, 2010)</strong>. A complete copy is available upon request.
+                    </p>
+                    <p class="font-medium text-slate-900">
+                      Under RHA Conditions, carrier liability for proven loss or damage caused by carrier negligence is strictly limited to <strong>£1,300 per metric tonne</strong> on the gross weight of the damaged unit, unless an increased liability limit is agreed in writing prior to dispatch and an additional insurance premium paid.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 6: Liability & Indemnity (18.0 – 24.0) -->
+        <!-- ========================================== -->
+        <section id="liability-indemnity" class="scroll-mt-32 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-xs">
+          <div class="border-b border-slate-200 pb-4 mb-6">
+            <span class="text-xs font-black uppercase tracking-wider text-red-700">Section 6</span>
+            <h2 class="text-2xl font-black text-slate-900 mt-1">Governing Law, Liability Limits & Indemnity</h2>
+          </div>
+
+          <div class="space-y-8 text-sm sm:text-base text-slate-700 leading-relaxed">
+            <!-- 18.0 Governing Law -->
+            <div>
+              <h3 class="text-lg font-black text-slate-900 mb-2">18.0 Governing Law</h3>
+              <p>
+                <strong>18.1 English Jurisdiction:</strong> These Terms and Conditions, and any contract or dispute arising out of or in connection with them, shall be governed by and construed in accordance with the <strong>laws of England and Wales</strong>. The courts of England and Wales shall have exclusive jurisdiction.
+              </p>
+            </div>
+
+            <!-- 19.0 Acceptance of Terms -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">19.0 Acceptance of Terms</h3>
+              <p>
+                <strong>19.1 Unqualified Acceptance:</strong> The booking of transport, payment of a deposit, signature on a delivery note, or submission of an online transport request shall constitute conclusive and unqualified acceptance of these Terms by the Customer.
+              </p>
+            </div>
+
+            <!-- 20.0 Limitation of Liability -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">20.0 Limitation of Liability</h3>
+              <p class="mb-2">
+                <strong>20.1 Statutory Exceptions:</strong> Nothing in these terms excludes or restricts the Company's liability for death or personal injury resulting from proven negligence, fraud, or fraudulent misrepresentation.
+              </p>
+              <p>
+                <strong>20.2 Financial Cap:</strong> Subject to clause 20.1, the Company shall have no liability to the Customer for loss of profit, lost rental revenue, temporary pitch or holiday park fees, business interruption, or any indirect or consequential damages.
+              </p>
+            </div>
+
+            <!-- 21.0 Pre-Existing Condition -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">21.0 Pre-Existing Condition & Structural Integrity</h3>
+              <p>
+                <strong>21.1 Pre-Existing Defects:</strong> The Company accepts no liability for pre-existing structural decay, floor delamination, chassis corrosion, cracked framework, or roof leakages. The driver reserves the right to capture photographic and video evidence of pre-existing defects at collection.
+              </p>
+            </div>
+
+            <!-- 22.0 Customer Disclosure -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">22.0 Customer Disclosure & Misrepresentation</h3>
+              <p>
+                <strong>22.1 Dimension Accuracy:</strong> The Customer must provide accurate dimensions (including tow-hitch extensions, roof overhangs, bay windows, and total height). Misrepresentation resulting in police aborts, bridge height restrictions, or vehicle re-allocation will result in full abortive and re-routing charges being levied on the Customer.
+              </p>
+            </div>
+
+            <!-- 23.0 Abortive Delivery -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">23.0 Abortive Delivery, Storage & Additional Charges</h3>
+              <p>
+                <strong>23.1 Inaccessible Sites & Storage:</strong> If delivery cannot be completed due to Customer absence, site refusal, unpaid park fees, soft ground, or inaccessible gates not disclosed in advance, the move is classed as an abortive delivery. The Customer remains liable for 100% of the haulage charge plus return carriage to our depot and daily secure storage charges until redelivery can be scheduled.
+              </p>
+            </div>
+
+            <!-- 24.0 Customer Indemnity -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">24.0 Customer Indemnity</h3>
+              <p>
+                <strong>24.1 Full Indemnity:</strong> The Customer shall indemnify the Company against all third-party claims, property damage, losses, and legal costs arising from breach of customer warranties, unauthorized instructions, or damage to private roads or gates traversed under Customer direction.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 7: Warranties & Final (25.0 – 28.0) -->
+        <!-- ========================================== -->
+        <section id="warranties-final" class="scroll-mt-32 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-xs">
+          <div class="border-b border-slate-200 pb-4 mb-6">
+            <span class="text-xs font-black uppercase tracking-wider text-red-700">Section 7</span>
+            <h2 class="text-2xl font-black text-slate-900 mt-1">Warranties, Entire Agreement & Cost Recovery</h2>
+          </div>
+
+          <div class="space-y-8 text-sm sm:text-base text-slate-700 leading-relaxed">
+            <!-- 25.0 Ownership & Authority Warranty -->
+            <div>
+              <h3 class="text-lg font-black text-slate-900 mb-2">25.0 Ownership & Authority Warranty</h3>
+              <p>
+                <strong>25.1 Legal Right of Transport:</strong> The Customer warrants that they are the legal owner of the mobile home or static caravan, or are duly authorized by the legal owner to contract for its movement, splitting, or disposal, and that the unit is free from any outstanding finance liens, park ownership disputes, or legal distraints.
+              </p>
+            </div>
+
+            <!-- 26.0 Entire Agreement -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">26.0 Entire Agreement</h3>
+              <p>
+                <strong>26.1 Complete Contract:</strong> These Terms and Conditions, together with the Company's formal quotation and booking confirmation, constitute the entire agreement between the parties, superseding all prior oral or written representations.
+              </p>
+            </div>
+
+            <!-- 27.0 Severability -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">27.0 Severability</h3>
+              <p>
+                <strong>27.1 Enforceability:</strong> If any provision of these Terms is determined by a court of competent jurisdiction to be invalid or unenforceable, such determination shall not affect the validity of the remaining provisions, which shall continue in full force and effect.
+              </p>
+            </div>
+
+            <!-- 28.0 Recovery of Costs -->
+            <div class="border-t border-slate-100 pt-6">
+              <h3 class="text-lg font-black text-slate-900 mb-2">28.0 Recovery of Costs</h3>
+              <p>
+                <strong>28.1 Legal & Debt Recovery Expenses:</strong> The Customer agrees to pay the Company on demand all reasonable administrative expenses, recovery agency fees, and legal costs (on a full indemnity basis) incurred in recovering any overdue amounts, unpaid demurrage, or storage balances.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Contact Dispatch Assistance Banner -->
+      <aside aria-label="Customer inquiries" class="mt-12 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 text-center shadow-xs">
+        <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-2">
+          Questions About Our Transport Terms?
+        </h3>
+        <p class="text-sm text-slate-700 max-w-xl mx-auto mb-6">
+          Our transport operations team is on hand to clarify access requirements, bridge heights, ESDAL notification schedules, or custom site logistics.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="tel:+441474444081"
+            class="inline-flex items-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-sm font-extrabold text-white shadow-xs transition hover:bg-red-700"
+          >
+            <span>Call Main Office: 01474 444081</span>
+          </a>
+          <a
+            href="tel:+447764341657"
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-slate-100 px-5 py-3 text-sm font-bold text-slate-900 transition hover:bg-slate-200"
+          >
+            <span>Direct Dispatch: 07764 341657</span>
+          </a>
+          <a
+            href="mailto:info@wemovemobilehomes.co.uk"
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 transition hover:bg-slate-50"
+          >
+            <span>Email Operations</span>
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const printBtn = document.getElementById('print-terms-btn');
+  if (printBtn) {
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+</script>
