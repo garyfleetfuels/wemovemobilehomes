@@ -1,29 +1,18 @@
 {
-  "specVersion": "1.0",
-  "name": "We Move Mobile Homes Agent Directory",
-  "description": "Autonomous discovery catalog and resource endpoints for We Move Mobile Homes specialist transport services.",
-  "url": "https://wemovemobilehomes.co.uk",
-  "entries": [
+  "$schema": "https://agentic-web.org/schemas/v1/ai-catalog.json",
+  "version": "1.0.0",
+  "name": "We Move Mobile Homes",
+  "description": "Specialist mobile home, static caravan, and park home transport operations across the UK and Europe.",
+  "endpoints": [
     {
-      "id": "transport-services",
-      "name": "Mobile Home & Caravan Transport Services",
       "type": "documentation",
-      "url": "https://wemovemobilehomes.co.uk/#services",
-      "description": "Details regarding single and twin unit transport, holiday lodges, and site removal."
+      "url": "/llms.txt",
+      "description": "Curated LLM operational profile and service specifications"
     },
     {
-      "id": "quote-calculator",
-      "name": "Transport Quote Intake",
-      "type": "service",
-      "url": "https://wemovemobilehomes.co.uk/#quote",
-      "description": "Specification endpoint for mobile home dimensions, journey routing, and access confirmations."
-    },
-    {
-      "id": "llms-manifest",
-      "name": "LLM Plaintext Context",
-      "type": "llms-txt",
-      "url": "https://wemovemobilehomes.co.uk/llms.txt",
-      "description": "Standardized markdown documentation for large language model crawlers."
+      "type": "terms",
+      "url": "/terms-conditions",
+      "description": "28-clause terms of carriage and site access requirements"
     }
   ]
 }
