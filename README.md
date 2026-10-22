@@ -1,65 +1,101 @@
-# We Move Mobile Homes (`wmmhweb`)
+# We Move Mobile Homes (`wemovemobilehomes`)
 
-Specialist Mobile Home, Static Caravan & Park Home Transport across the United Kingdom and International transit routes.
+Specialist Mobile Home, Static Caravan & Park Home Transport across the United Kingdom and Europe.
 
-This project is built with **Astro**, **Tailwind CSS**, and **TypeScript** (Strict Mode), pre-configured for automated continuous deployment to a single production ("Live") environment on **Azure Static Web Apps**.
+Built with **Astro 7**, **Tailwind CSS v4**, and **TypeScript** (Strict Mode), provisioned via **Terraform**, and configured for automated CI/CD deployments to **Azure Static Web Apps**.
+
+- **Repository**: [https://github.com/garyfleetfuels/wemovemobilehomes](https://github.com/garyfleetfuels/wemovemobilehomes)
+- **Live Azure Endpoint**: [https://agreeable-forest-0a5a9fe0f.4.azurestaticapps.net](https://agreeable-forest-0a5a9fe0f.4.azurestaticapps.net)
+- **Production Target Domain**: `https://wemovemobilehomes.co.uk`
 
 ---
 
-## 🚚 Business Scope
-- **Mobile Home & Static Caravan Transport**: UK Nationwide and European relocations (single units, twin units, luxury holiday lodges).
-- **Specialist Low Loader Haulage**: Extendable step-frame trailers engineered for abnormal widths and lengths.
-- **Hiab Crane Hire & Siting**: Precision lifting over walls, hedges, and challenging park terrain with certified operators.
-- **Abnormal Load Permits & Escorts**: Highways England ESDAL statutory notifications, police force liaisons, route surveys, and pilot escort vehicles.
-- **Emergency Failed Transport Rescue**: Rapid breakdown response for stuck loads, fractured chassis, or compromised running gear.
-- **Touring Caravan & Commercial Trailer Logistics**: UK and European door-to-door transit, customs clearance, and ferry transport.
+## 🚚 Business Scope & Core Services
+- **Moving Mobile Homes & Caravans**: Complete removal, transport, and delivery. Splitting, sheeting, and reassembly of twin units, plus site removal and responsible disposal.
+- **Touring Caravans**: Door-to-door collection, transit, and delivery across local routes, UK nationwide destinations, and European international journeys.
+- **Abnormal Loads & Low Loader Haulage**: Step-frame low loaders engineered for oversized widths and lengths, Hiab crane hire & lifting, movement orders, and police/ESDAL statutory notifications.
+- **Terms & Legal Compliance**: 28-clause Terms and Conditions of Carriage under England & Wales jurisdiction, incorporating RHA 2010 conditions, £85/hr demurrage, and strict 2ft clearance and hard-standing requirements.
 
 ---
 
 ## 🛠️ Technology Stack & Requirements
 - **Runtime**: Node.js `>=26.0.0` (managed via [`.nvmrc`](.nvmrc))
-- **Framework**: [Astro](https://astro.build) (Static Site Generation)
+- **Framework**: [Astro 7](https://astro.build) (Static Site Generation with native `<Image />` optimization)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com) via `@tailwindcss/vite`
-- **Sitemap**: Official [`@astrojs/sitemap`](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
+- **Infrastructure as Code**: Terraform with `Azure/avm-res-web-staticsite/azurerm` (Azure Verified Modules)
 - **Type Checking**: TypeScript strict mode (`astro/tsconfigs/strict` with `@astrojs/check`)
-- **Hosting Target**: [Azure Static Web Apps](https://azure.microsoft.com/en-us/products/app-service/static/)
-- **SEO & GEO Standards**: Schema.org JSON-LD (`MovingCompany`, `AutoTransport`, `BreadcrumbList`), `robots.txt`, and [`llms.txt`](public/llms.txt)
+- **Hosting Target**: [Azure Static Web Apps](https://azure.microsoft.com/en-us/products/app-service/static/) (Free Tier, Anycast Edge)
+- **SEO & AI Discoverability**: Schema.org JSON-LD (`MovingCompany`, `AutoTransport`, `OfferCatalog`), `robots.txt`, [`llms.txt`](public/llms.txt), and ARD [`ai-catalog.json`](public/ai-catalog.json)
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-wmmhweb/
-├── public/                       # Static assets & public SEO artifacts
-│   ├── favicon.ico
-│   ├── favicon.svg
-│   ├── llms.txt                  # Standardized AI/LLM search engine operational summary (GEO)
-│   ├── robots.txt                # Crawler directives pointing to sitemap-index.xml
-│   └── staticwebapp.config.json  # Azure SWA routing and security headers
+wemovemobilehomes/
+├── .github/
+│   └── workflows/
+│       └── azure-static-web-apps.yml  # GitHub Actions CI/CD to Azure SWA
+├── infra/                             # Terraform infrastructure as code
+│   ├── main.tf                        # AVM Azure Static Web App definition
+│   ├── variables.tf                   # Target region, RG, and tagging variables
+│   ├── outputs.tf                     # SWA default hostname & API key
+│   └── versions.tf                    # azurerm, azapi, and modtm providers
+├── public/                            # Static assets & crawler manifests
+│   ├── .well-known/
+│   │   └── ai-catalog.json            # Agent Resource Directory (ARD) catalog
+│   ├── images/                        # Static raster & vector brand graphics
+│   │   └── websitelogocolour2.svg     # Brand vector logo
+│   ├── ai-catalog.json                # ARD root manifest for autonomous agents
+│   ├── favicon.svg                    # Scalable vector favicon
+│   ├── favicon.ico                    # Multi-resolution fallback icon
+│   ├── favicon-16x16.png              # Display fallback
+│   ├── favicon-32x32.png              # Standard desktop tab icon
+│   ├── apple-touch-icon.png           # iOS touch icon
+│   ├── llms.txt                       # Curated markdown profile for LLMs & AI crawlers
+│   ├── robots.txt                     # Crawler directives pointing to sitemap-index.xml
+│   └── staticwebapp.config.json       # Azure SWA security headers and MIME types
 ├── src/
-│   ├── components/               # Reusable UI components
-│   │   ├── ContactCta.astro      # Quote inquiry form & dispatch details
-│   │   ├── FleetHighlights.astro # Haulage specs & escort division
-│   │   ├── Footer.astro          # Corporate footer & legal compliance
-│   │   ├── Hero.astro            # Landing hero, company name & strapline
-│   │   ├── Navbar.astro          # Sticky navigation header & quick CTA
-│   │   └── Services.astro        # Core capability service cards
+│   ├── assets/images/                 # Managed assets processed by Astro's Image engine
+│   ├── components/                    # Reusable UI components
+│   │   ├── ContactCta.astro           # Friction-free quote form & access checker
+│   │   ├── Footer.astro               # Corporate footer, contact desk & legal links
+│   │   ├── Hero.astro                 # Above-the-fold hero with eager LCP image
+│   │   ├── Navbar.astro               # Sticky light header with root-relative navigation
+│   │   └── Services.astro             # 3-card core capability grid matching live services
 │   ├── layouts/
-│   │   └── Layout.astro          # Base HTML5 shell, Schema.org JSON-LD, GSC & GA4
+│   │   └── Layout.astro               # HTML5 shell, Schema.org JSON-LD, fonts & analytics
 │   ├── pages/
-│   │   └── index.astro           # Main landing page
-│   ├── styles/
-│   │   └── global.css            # Tailwind CSS entry & base styling
-│   └── env.d.ts                  # Strict environment variable typings
-├── .env.example                  # Template for environment configuration
-├── .gitignore                    # Industry-standard git exclusions
-├── .nvmrc                        # Node.js 26 runtime specification
-├── astro.config.mjs              # Astro configuration with site URL, sitemap, and Tailwind
-├── package.json                  # Scripts & dependencies
-├── staticwebapp.config.json      # Root Azure SWA config reference
-└── tsconfig.json                 # TypeScript strict configuration
+│   │   ├── index.astro                # 3-section high-converting landing page
+│   │   └── terms-conditions.astro     # 28-clause legal Terms & Conditions contract
+│   └── styles/
+│       └── global.css                 # Tailwind CSS v4 directives & font declarations
+├── astro.config.mjs                   # Astro configuration with sitemap & Tailwind plugins
+├── package.json                       # Scripts and project dependencies
+├── staticwebapp.config.json           # Root Azure SWA config reference
+└── tsconfig.json                      # Strict TypeScript compiler options
 ```
+
+---
+
+## ☁️ Azure Infrastructure & CI/CD Deployment
+
+The cloud infrastructure is defined as code in [`infra/`](infra/) using HashiCorp Terraform and Azure Verified Modules (`avm-res-web-staticsite`):
+
+- **Target Subscription**: `717cfa33-1524-4715-a9e2-effb12af994d`
+- **Tenant Domain**: `garyfleetfuelsco.onmicrosoft.com`
+- **Resource Group**: `rg-wmmh-prod` (West Europe)
+- **Static Web App**: `stapp-wmmh-prod` (East US 2 control plane, global Anycast edge)
+- **Isolation Guarantee**: Dedicated resource group and state isolation ensuring complete separation from other workloads.
+
+### GitHub Actions Deployment Pipeline
+The CI/CD pipeline ([`.github/workflows/azure-static-web-apps.yml`](.github/workflows/azure-static-web-apps.yml)) automatically runs on push to `main`:
+1. Checks out repository and configures Node.js (`.nvmrc`).
+2. Runs `npm ci`, `npx astro check`, and `npm run build`.
+3. Deploys optimized static bundle (`dist/`) to Azure Static Web Apps using the repository secret:
+   ```bash
+   AZURE_STATIC_WEB_APPS_API_TOKEN
+   ```
 
 ---
 
@@ -111,6 +147,7 @@ SITE_URL="https://wemovemobilehomes.co.uk"
 
 - **`public/llms.txt`**: Serves as a curated operational profile for LLM retrieval and Generative Engine Optimization (e.g. ChatGPT Search, Perplexity, Claude, Apple Intelligence).
 - **`public/robots.txt`**: Unblocks major AI and search engine crawlers and points to `https://wemovemobilehomes.co.uk/sitemap-index.xml`.
+- **`public/ai-catalog.json` & `public/.well-known/ai-catalog.json`**: Agent Resource Directory (ARD) metadata for autonomous agents.
 - **Schema.org Structured Data**: Incorporates a rich `@graph` in `Layout.astro` with `MovingCompany`, `AutoTransport`, `BreadcrumbList`, and `OfferCatalog`.
 
 ---
